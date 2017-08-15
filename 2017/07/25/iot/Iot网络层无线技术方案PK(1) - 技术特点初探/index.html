@@ -55,7 +55,11 @@
   
 
   
+    
+      
+    
 
+    
   
 
   
@@ -64,8 +68,16 @@
 
   
     
+      
     
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=monospace:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|monospace:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   
 
 
@@ -94,20 +106,20 @@
 
 
 
-<meta name="description" content="Author： nix.longDate    : 2017.07.25整理撰写，禁止转载； 错误之处，敬谢斧正.   0.引言 物联网领域典型的3层结构划分为:  感知层 网络层 应用层 (细粒度可进一步划分为服务层和应用层)   感知层是数据的来源, 应用层是数据的分析展现. 网络层是钮合感知层和应用层的重要数据通路.目前网络层的成熟方案有各种有线、无线方式或组合方式。本文主要讨论几个用于">
+<meta name="description" content="0.引言 物联网领域典型的3层结构划分为:  感知层 网络层 应用层 (细粒度可进一步划分为服务层和应用层)   感知层是数据的来源, 应用层是数据的分析展现. 网络层是钮合感知层和应用层的重要数据通路.目前网络层的成熟方案有各种有线、无线方式或组合方式。本文主要讨论几个用于物联网网络层的无线技术">
 <meta name="keywords" content="Iot,NB-IOT,Lora,Wifi,Zigbee">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Iot网络层无线技术方案PK(1) - 技术特点初探">
 <meta property="og:url" content="http://yoursite.com/2017/07/25/iot/Iot网络层无线技术方案PK(1) - 技术特点初探/index.html">
 <meta property="og:site_name" content="Long&#39;s Blog">
-<meta property="og:description" content="Author： nix.longDate    : 2017.07.25整理撰写，禁止转载； 错误之处，敬谢斧正.   0.引言 物联网领域典型的3层结构划分为:  感知层 网络层 应用层 (细粒度可进一步划分为服务层和应用层)   感知层是数据的来源, 应用层是数据的分析展现. 网络层是钮合感知层和应用层的重要数据通路.目前网络层的成熟方案有各种有线、无线方式或组合方式。本文主要讨论几个用于">
+<meta property="og:description" content="0.引言 物联网领域典型的3层结构划分为:  感知层 网络层 应用层 (细粒度可进一步划分为服务层和应用层)   感知层是数据的来源, 应用层是数据的分析展现. 网络层是钮合感知层和应用层的重要数据通路.目前网络层的成熟方案有各种有线、无线方式或组合方式。本文主要讨论几个用于物联网网络层的无线技术">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://otfz8unl1.bkt.clouddn.com/markdown/170725/lemdeLH9I9.png?imageslim">
 <meta property="og:image" content="http://otfz8unl1.bkt.clouddn.com/markdown/170726/8G96822FGa.png?imageslim">
-<meta property="og:updated_time" content="2017-08-15T06:46:03.114Z">
+<meta property="og:updated_time" content="2017-08-15T13:53:28.665Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Iot网络层无线技术方案PK(1) - 技术特点初探">
-<meta name="twitter:description" content="Author： nix.longDate    : 2017.07.25整理撰写，禁止转载； 错误之处，敬谢斧正.   0.引言 物联网领域典型的3层结构划分为:  感知层 网络层 应用层 (细粒度可进一步划分为服务层和应用层)   感知层是数据的来源, 应用层是数据的分析展现. 网络层是钮合感知层和应用层的重要数据通路.目前网络层的成熟方案有各种有线、无线方式或组合方式。本文主要讨论几个用于">
+<meta name="twitter:description" content="0.引言 物联网领域典型的3层结构划分为:  感知层 网络层 应用层 (细粒度可进一步划分为服务层和应用层)   感知层是数据的来源, 应用层是数据的分析展现. 网络层是钮合感知层和应用层的重要数据通路.目前网络层的成熟方案有各种有线、无线方式或组合方式。本文主要讨论几个用于物联网网络层的无线技术">
 <meta name="twitter:image" content="http://otfz8unl1.bkt.clouddn.com/markdown/170725/lemdeLH9I9.png?imageslim">
 
 
@@ -359,12 +371,7 @@
       
 
       
-        <hr>
-<blockquote>
-<p>Author： nix.long<br>Date    : 2017.07.25<br>整理撰写，禁止转载； 错误之处，敬谢斧正.</p>
-</blockquote>
-<hr>
-<h4 id="0-引言"><a href="#0-引言" class="headerlink" title="0.引言"></a>0.引言</h4><blockquote>
+        <h4 id="0-引言"><a href="#0-引言" class="headerlink" title="0.引言"></a>0.引言</h4><blockquote>
 <p><strong>物联网领域典型的3层结构划分为:</strong></p>
 <ul>
 <li>感知层</li>
@@ -374,6 +381,7 @@
 <p>感知层是数据的来源, 应用层是数据的分析展现. 网络层是钮合感知层和应用层的重要数据通路.目前网络层的成熟方案有各种有线、无线方式或组合方式。本文主要讨论几个用于物联网网络层的无线技术</p>
 </blockquote>
 <p><br></p>
+<a id="more"></a>
 <h4 id="1-网络层技术方案总览"><a href="#1-网络层技术方案总览" class="headerlink" title="1.网络层技术方案总览"></a>1.网络层技术方案总览</h4><p><img src="http://otfz8unl1.bkt.clouddn.com/markdown/170725/lemdeLH9I9.png?imageslim" alt="两类网络结构"></p>
 <p> 根据不同的应用场景, 可以使用两类网络结构来完成物联网组网.</p>
 <blockquote>
@@ -400,7 +408,6 @@
 </blockquote>
 <p>接下来主要比较 <strong>Wifi、Bluetooth(蓝牙)、ZigBee、Z-Wave、Lora、NB-IOT</strong> 几类无线通信技术的特点和典型应用场景<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">备注: </div><div class="line">无线通信技术非常多, 为何本文只选这几种对比? 缘由前4类(Wifi/蓝牙/Zigbee/Z-Wave) 在近年的家居物联网领域采用相对广泛, 而Lora/NB-IOT又在中国的LPWAN应用领域上位之争争得不亦乐乎, 就让人容易忽略掉LPWAN的诸如sigfox的其他几个儿子...</div></pre></td></tr></table></figure></p>
 <p><br></p>
-<a id="more"></a>
 <h4 id="2-撩开你的面纱-各家技术特点初探"><a href="#2-撩开你的面纱-各家技术特点初探" class="headerlink" title="2.撩开你的面纱 - 各家技术特点初探"></a>2.撩开你的面纱 - 各家技术特点初探</h4><p><img src="http://otfz8unl1.bkt.clouddn.com/markdown/170726/8G96822FGa.png?imageslim" alt="mark"></p>
 <h5 id="2-1-Wifi典型特点"><a href="#2-1-Wifi典型特点" class="headerlink" title="2.1 Wifi典型特点"></a>2.1 Wifi典型特点</h5><ul>
 <li>基于IEEE 802.11, 支持广域网/局域网接入 / 2.4G ISM频段</li>
@@ -460,6 +467,10 @@
 <h4 id="3-华山论剑之-PK"><a href="#3-华山论剑之-PK" class="headerlink" title="3. 华山论剑之/PK"></a><strong>3. 华山论剑之/PK</strong></h4><p>在实际应用中，方案选择总会参照几个要点: 方案成本、速率、数据安全性、网络稳定性和网络容量、功耗和传输距离 等. 然后综合选择一个解决方案…</p>
 <p>华山论剑，近了…</p>
 <p><br></p>
+<hr>
+<blockquote>
+<p>Author： nix.long<br>Date    : 2017.07.25<br>整理撰写，禁止转载； 错误之处，敬谢斧正.</p>
+</blockquote>
 
       
     </div>
@@ -508,8 +519,8 @@
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2017/07/26/iot/Iot网络层无线技术方案PK(2) - 华山论剑Round 1 - LPWAN的王者之争 - NB-IOT pk Lora/" rel="prev" title="Iot网络层无线技术方案PK(2) - 华山论剑Round 1 - LPWAN的王者之争 - NB-IOT pk Lora">
-                Iot网络层无线技术方案PK(2) - 华山论剑Round 1 - LPWAN的王者之争 - NB-IOT pk Lora <i class="fa fa-chevron-right"></i>
+              <a href="/2017/07/26/iot/Iot网络层无线技术方案PK(2) - 华山论剑Round 1 - LPWAN的王者之争 - NB-IOT pk Lora/" rel="prev" title="Iot网络层无线技术方案PK(2) - LPWAN的王者之争[NB-IOT pk Lora]">
+                Iot网络层无线技术方案PK(2) - LPWAN的王者之争[NB-IOT pk Lora] <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>

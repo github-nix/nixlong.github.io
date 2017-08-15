@@ -55,7 +55,11 @@
   
 
   
+    
+      
+    
 
+    
   
 
   
@@ -64,8 +68,16 @@
 
   
     
+      
     
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=monospace:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|monospace:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   
 
 
@@ -94,20 +106,20 @@
 
 
 
-<meta name="description" content="Author:     nix.long原创撰写，禁止转载； 错误之处，敬谢大刀斧正.    Internet Of Things - 万物联网。 互联网是人与人的网络互联来产生价值, 而物联网目的是能将任何物体的任何属性都能接入网络或进行反向控制(交互控制和智能控制), 有价值的立刻产生价值, 没有价值的进行价值创造.   [TOC] 0. 物联网要义要义:   物联网的基础要义是远程数据获取">
+<meta name="description" content="Internet Of Things - 万物联网。 互联网是人与人的网络互联来产生价值, 而物联网目的是能将任何物体的任何属性都能接入网络或进行反向控制(交互控制和智能控制), 有价值的立刻产生价值, 没有价值的进行价值创造.   0. 物联网要义要义:   物联网的基础要义是远程数据获取和远程对象控制 远程获取数据和远程对象控制既为满足既有需求，又为创造产生新价值 获得的数据需要存储、分析使">
 <meta name="keywords" content="Iot">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Iot基础案例设计初览">
 <meta property="og:url" content="http://yoursite.com/2017/07/24/iot/Iot基础案例设计初览/index.html">
 <meta property="og:site_name" content="Long&#39;s Blog">
-<meta property="og:description" content="Author:     nix.long原创撰写，禁止转载； 错误之处，敬谢大刀斧正.    Internet Of Things - 万物联网。 互联网是人与人的网络互联来产生价值, 而物联网目的是能将任何物体的任何属性都能接入网络或进行反向控制(交互控制和智能控制), 有价值的立刻产生价值, 没有价值的进行价值创造.   [TOC] 0. 物联网要义要义:   物联网的基础要义是远程数据获取">
+<meta property="og:description" content="Internet Of Things - 万物联网。 互联网是人与人的网络互联来产生价值, 而物联网目的是能将任何物体的任何属性都能接入网络或进行反向控制(交互控制和智能控制), 有价值的立刻产生价值, 没有价值的进行价值创造.   0. 物联网要义要义:   物联网的基础要义是远程数据获取和远程对象控制 远程获取数据和远程对象控制既为满足既有需求，又为创造产生新价值 获得的数据需要存储、分析使">
 <meta property="og:locale" content="zh-Hans">
 <meta property="og:image" content="http://otfz8unl1.bkt.clouddn.com/markdown/170725/lemdeLH9I9.png?imageslim">
 <meta property="og:image" content="http://otfz8unl1.bkt.clouddn.com/markdown/170727/bi405Fe65E.png?imageslim">
-<meta property="og:updated_time" content="2017-08-15T06:46:28.046Z">
+<meta property="og:updated_time" content="2017-08-15T13:55:42.393Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Iot基础案例设计初览">
-<meta name="twitter:description" content="Author:     nix.long原创撰写，禁止转载； 错误之处，敬谢大刀斧正.    Internet Of Things - 万物联网。 互联网是人与人的网络互联来产生价值, 而物联网目的是能将任何物体的任何属性都能接入网络或进行反向控制(交互控制和智能控制), 有价值的立刻产生价值, 没有价值的进行价值创造.   [TOC] 0. 物联网要义要义:   物联网的基础要义是远程数据获取">
+<meta name="twitter:description" content="Internet Of Things - 万物联网。 互联网是人与人的网络互联来产生价值, 而物联网目的是能将任何物体的任何属性都能接入网络或进行反向控制(交互控制和智能控制), 有价值的立刻产生价值, 没有价值的进行价值创造.   0. 物联网要义要义:   物联网的基础要义是远程数据获取和远程对象控制 远程获取数据和远程对象控制既为满足既有需求，又为创造产生新价值 获得的数据需要存储、分析使">
 <meta name="twitter:image" content="http://otfz8unl1.bkt.clouddn.com/markdown/170725/lemdeLH9I9.png?imageslim">
 
 
@@ -360,14 +372,9 @@
 
       
         <blockquote>
-<p>Author:     nix.long<br>原创撰写，禁止转载； 错误之处，敬谢大刀斧正.</p>
-</blockquote>
-<hr>
-<blockquote>
 <p>Internet Of Things - 万物联网。 互联网是人与人的网络互联来产生价值, 而物联网目的是能将任何物体的任何属性都能接入网络或进行反向控制(交互控制和智能控制), 有价值的立刻产生价值, 没有价值的进行价值创造.</p>
 </blockquote>
 <hr>
-<p>[TOC]</p>
 <h4 id="0-物联网要义"><a href="#0-物联网要义" class="headerlink" title="0. 物联网要义"></a><strong>0. 物联网要义</strong></h4><p>要义:</p>
 <blockquote>
 <ol>
@@ -383,6 +390,7 @@
 </li>
 </ol>
 </blockquote>
+<a id="more"></a>
 <p>不同应用场景的可能的演进过程:</p>
 <blockquote>
 <ol>
@@ -392,20 +400,15 @@
 </ol>
 </blockquote>
 <ul>
-<li><p>远程可以通过互联网加各种局域的有线/无线协议来进行技术实现, 对于获取数据和远程控制, 只有基于安全才会有实用意义. 这里的安全包括但不仅限于: 数据获取、传输和存储的加密性安全；数据不遗失的稳定性安全；涉及用户的隐私性数据安全；涉及远程控制的高安全可靠性. 但在目前行业的一片喧嚣声中, 安全性可能是最被忽略和置后考虑的. </p>
-</li>
-<li><p>根据行业的差异性，物联网又涉及到几个大的细分领域：工业物联(4.0重要方向), 家居物联, 车联网以及农业、环境、城市公共事业等</p>
-</li>
-<li><p>由于安全性的顾虑, 目前家居物连外的其他方向, 远程控制的发展极为缓慢的. 唯在家居物连方向，由于远程控制涉及的安全性不为特别突出, 一些典型的远程控制场景在这个领域诞生, 比如**的家居产品系列. 当然，如果突然遇到家里接入网络的LED灯忽明忽暗，也不要感到恐怖。只是可能你的家居网络被黑客攻破后逗你玩玩而已.</p>
-</li>
-<li><p>这里使用家居物联而非智能家居这个词的原因是: 联网只是初级门槛, 而智慧还要涉及更多的工作</p>
-</li>
+<li>远程可以通过互联网加各种局域的有线/无线协议来进行技术实现, 对于获取数据和远程控制, 只有基于安全才会有实用意义. 这里的安全包括但不仅限于: 数据获取、传输和存储的加密性安全；数据不遗失的稳定性安全；涉及用户的隐私性数据安全；涉及远程控制的高安全可靠性. 但在目前行业的一片喧嚣声中, 安全性可能是最被忽略和置后考虑的. </li>
+<li>根据行业的差异性，物联网又涉及到几个大的细分领域：工业物联(4.0重要方向), 家居物联, 车联网以及农业、环境、城市公共事业等</li>
+<li>由于安全性的顾虑, 目前家居物连外的其他方向, 远程控制的发展极为缓慢的. 唯在家居物连方向，由于远程控制涉及的安全性不为特别突出, 一些典型的远程控制场景在这个领域诞生, 比如**的家居产品系列. 当然，如果突然遇到家里接入网络的LED灯忽明忽暗，也不要感到恐怖。只是可能你的家居网络被黑客攻破后逗你玩玩而已.</li>
+<li>这里使用家居物联而非智能家居这个词的原因是: 联网只是初级门槛, 而智慧还要涉及更多的工作</li>
 </ul>
 <blockquote>
 <p>本文先主要谈谈三层结构的网络层, 感知层和应用层涉及技术在以后的设计案例中介绍</p>
 </blockquote>
 <p><br></p>
-<a id="more"></a>
 <h4 id="1-远程-网络层-技术实现举例"><a href="#1-远程-网络层-技术实现举例" class="headerlink" title="1. 远程[网络层]技术实现举例"></a><strong>1. 远程[网络层]技术实现举例</strong></h4><blockquote>
 <p>本章节提到的各种无线技术特点不深解析点到为止，会另开文进行比较</p>
 </blockquote>
@@ -515,6 +518,10 @@
 <p>用一个简单的设计案例简单的描述了物联网的三层技术结构，提到几个简单的行业常见词语。物联网是一个大的行业，不仅仅是一个专业，有多种应用场景和多类典型的应用领域。前文提到的单层网络结构和提到的LPWAN技术，只是在小X的案例中没有应用到，在其他更多更广阔的领域里，都在发挥着巨大的作用。</p>
 <p>感知终端层涉及的更多软硬件(及各类传感器)技术，网络层的有线无线局域广域方案、应用层的ABCD等，都在各种场景里面进行着排列组合，尽量设计出最优方案来解决各种场景问题。优秀的方案特点必定包含但不限于：简洁的技术实现、稳定而又安全、尽量低的成本、更方便的运行维护。</p>
 <p>下次再聊别的，也关于IOT！</p>
+<hr>
+<blockquote>
+<p>Author:     nix.long<br>原创撰写，禁止转载； 错误之处，敬谢大刀斧正.</p>
+</blockquote>
 
       
     </div>

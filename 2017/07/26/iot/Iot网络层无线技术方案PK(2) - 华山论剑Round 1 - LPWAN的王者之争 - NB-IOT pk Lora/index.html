@@ -55,7 +55,11 @@
   
 
   
+    
+      
+    
 
+    
   
 
   
@@ -64,8 +68,16 @@
 
   
     
+      
     
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=monospace:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|monospace:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   
 
 
@@ -94,18 +106,18 @@
 
 
 
-<meta name="description" content="Author： nix.longDate    : 2017.07.26整理撰写，禁止转载； 错误之处，敬谢斧正.    续接上篇:       Iot网络层无线技术方案PK(1) - 技术特点初探   Tags: IOT NB-IOT Lora 3.1 华山论剑Round 1: LPWAN的王者之争 - NB-IOT pk Lora低功耗广域网应用典型的场景条件是:   a. 终端节点无法或者">
+<meta name="description" content="续接上篇:       Iot网络层无线技术方案PK(1) - 技术特点初探   3.1 华山论剑Round 1: LPWAN的王者之争 - NB-IOT pk Lora低功耗广域网应用典型的场景条件是:   a. 终端节点无法或者很难提供市政电源供电, 需要使用电池设备 b. 终端节点的数据上下行频次非常低 c. 终端节点的数量可能非常多 d. 终端节点之间的距离或者终端节点安装位置距离数据中">
 <meta name="keywords" content="Iot,NB-IOT,Lora">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Iot网络层无线技术方案PK(2) - 华山论剑Round 1 - LPWAN的王者之争 - NB-IOT pk Lora">
+<meta property="og:title" content="Iot网络层无线技术方案PK(2) - LPWAN的王者之争[NB-IOT pk Lora]">
 <meta property="og:url" content="http://yoursite.com/2017/07/26/iot/Iot网络层无线技术方案PK(2) - 华山论剑Round 1 - LPWAN的王者之争 - NB-IOT pk Lora/index.html">
 <meta property="og:site_name" content="Long&#39;s Blog">
-<meta property="og:description" content="Author： nix.longDate    : 2017.07.26整理撰写，禁止转载； 错误之处，敬谢斧正.    续接上篇:       Iot网络层无线技术方案PK(1) - 技术特点初探   Tags: IOT NB-IOT Lora 3.1 华山论剑Round 1: LPWAN的王者之争 - NB-IOT pk Lora低功耗广域网应用典型的场景条件是:   a. 终端节点无法或者">
+<meta property="og:description" content="续接上篇:       Iot网络层无线技术方案PK(1) - 技术特点初探   3.1 华山论剑Round 1: LPWAN的王者之争 - NB-IOT pk Lora低功耗广域网应用典型的场景条件是:   a. 终端节点无法或者很难提供市政电源供电, 需要使用电池设备 b. 终端节点的数据上下行频次非常低 c. 终端节点的数量可能非常多 d. 终端节点之间的距离或者终端节点安装位置距离数据中">
 <meta property="og:locale" content="zh-Hans">
-<meta property="og:updated_time" content="2017-08-15T06:46:16.400Z">
+<meta property="og:updated_time" content="2017-08-15T13:54:23.438Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Iot网络层无线技术方案PK(2) - 华山论剑Round 1 - LPWAN的王者之争 - NB-IOT pk Lora">
-<meta name="twitter:description" content="Author： nix.longDate    : 2017.07.26整理撰写，禁止转载； 错误之处，敬谢斧正.    续接上篇:       Iot网络层无线技术方案PK(1) - 技术特点初探   Tags: IOT NB-IOT Lora 3.1 华山论剑Round 1: LPWAN的王者之争 - NB-IOT pk Lora低功耗广域网应用典型的场景条件是:   a. 终端节点无法或者">
+<meta name="twitter:title" content="Iot网络层无线技术方案PK(2) - LPWAN的王者之争[NB-IOT pk Lora]">
+<meta name="twitter:description" content="续接上篇:       Iot网络层无线技术方案PK(1) - 技术特点初探   3.1 华山论剑Round 1: LPWAN的王者之争 - NB-IOT pk Lora低功耗广域网应用典型的场景条件是:   a. 终端节点无法或者很难提供市政电源供电, 需要使用电池设备 b. 终端节点的数据上下行频次非常低 c. 终端节点的数量可能非常多 d. 终端节点之间的距离或者终端节点安装位置距离数据中">
 
 
 
@@ -140,7 +152,7 @@
 
 
 
-  <title>Iot网络层无线技术方案PK(2) - 华山论剑Round 1 - LPWAN的王者之争 - NB-IOT pk Lora | Long's Blog</title>
+  <title>Iot网络层无线技术方案PK(2) - LPWAN的王者之争[NB-IOT pk Lora] | Long's Blog</title>
   
 
 
@@ -284,7 +296,7 @@
 
         
         
-          <h1 class="post-title" itemprop="name headline">Iot网络层无线技术方案PK(2) - 华山论剑Round 1 - LPWAN的王者之争 - NB-IOT pk Lora</h1>
+          <h1 class="post-title" itemprop="name headline">Iot网络层无线技术方案PK(2) - LPWAN的王者之争[NB-IOT pk Lora]</h1>
         
 
         <div class="post-meta">
@@ -357,14 +369,9 @@
 
       
         <blockquote>
-<p>Author： nix.long<br>Date    : 2017.07.26<br>整理撰写，禁止转载； 错误之处，敬谢斧正.</p>
-</blockquote>
-<hr>
-<blockquote>
 <p>续接上篇:       <strong>Iot网络层无线技术方案PK(1) - 技术特点初探</strong></p>
 </blockquote>
 <hr>
-<p>Tags: IOT NB-IOT Lora</p>
 <h5 id="3-1-华山论剑Round-1-LPWAN的王者之争-NB-IOT-pk-Lora"><a href="#3-1-华山论剑Round-1-LPWAN的王者之争-NB-IOT-pk-Lora" class="headerlink" title="3.1 华山论剑Round 1: LPWAN的王者之争 - NB-IOT pk Lora"></a><strong>3.1 华山论剑Round 1: LPWAN的王者之争 - NB-IOT pk Lora</strong></h5><p>低功耗广域网应用典型的场景条件是: </p>
 <ul>
 <li>a. 终端节点无法或者很难提供市政电源供电, 需要使用电池设备</li>
@@ -373,6 +380,7 @@
 <li>d. 终端节点之间的距离或者终端节点安装位置距离数据中心可能相距非常远</li>
 </ul>
 <p>回到上文的两中网络结构中, LPWAN方案就是从终端到云端典型的一层网络结构。上文的场景条件我们假设用其他方案实现: </p>
+<a id="more"></a>
 <ol>
 <li>如果此类场景都通过有线布线来实现，那么实现方案是灾难性的。</li>
 <li>在LPWAN技术成熟之前，由于Zigbee具有低功耗和路由两个特征，且修改条件d为满足这样的条件: 节点之间的距离相距不远且环境容易接入其他广域网络.  这样的小部分场景就让Zigbee + 网关转换的两层网络结构蚕食。</li>
@@ -382,7 +390,6 @@
 <p>NB-IOT和Lora有极其相似的技术规范特征和设计目的, 一个为3GPP所生,一个由Lora联盟在养. 他们生来就是相同应用领域的竞争关系, 全球范围内, 领地都各有斩获, 但在国内，情况大有不同: 所有运营商都在推NB-IOT. 而只有部分企业在局部范围内建设Lora网络用于试点或者给出Lora网络建设方案等待买家.</p>
 <p>假设在国内最终的结果和目前状况一样：NB-IOT全歼三大运营商、Lora被三大运营商通通抛弃。那么Lora是否该提前在中国市场唱响挽歌呢？</p>
 <p>我们先不急于下结论，先来看看GSMA研究报告给LPWAN定义的7大类应用领域：农业、环境、消费品及医疗、工业、物流、智能楼宇以及智慧城市/公共事业。</p>
-<a id="more"></a>
 <ul>
 <li>农业：农业应用（养殖及土地监测、禽畜跟踪）</li>
 <li>环境：环境监测（污染、噪声、雨、云、河水流速、健康危害等的数据采集和实时监控）</li>
@@ -407,18 +414,10 @@
 <p>在不远的将来，蛋糕大部分必定是被NB-IOT所切分，Lora可能在细分市场、局部地区和特种行业分到一点稀粥。但是还有一点甚为重要：LPWAN产品并不会在使用电源后就不能更好的工作，尤其在国内的Lora由一个广域网协议简直使用成一个局域网协议的情况下，那么他们可能会去抢占其他老牌技术的地盘，比如数传、比如Zigbee<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">PK结果预测: 在国内，NB-IOT会坐稳LPWAN领域的头把交椅, Lora分到小块份额，但不至于凄唱挽歌. 至于LPWAN的其他几个儿子, 国内暂未听什么打雷声, 距离下雨就远啦</div></pre></td></tr></table></figure></p>
 </blockquote>
 <p><br></p>
-<h5 id="3-2-Round-2-智能家居领域的缠斗还是协作-Wifi-pk-Zigbee"><a href="#3-2-Round-2-智能家居领域的缠斗还是协作-Wifi-pk-Zigbee" class="headerlink" title="3.2 Round 2: 智能家居领域的缠斗还是协作? - Wifi  pk  Zigbee"></a>3.2 Round 2: 智能家居领域的缠斗还是协作? - Wifi  pk  Zigbee</h5><h5 id="3-3-Round-3-丢失的故土还是新王的疆域-LPWAN会否蚕食ZigBee的领地"><a href="#3-3-Round-3-丢失的故土还是新王的疆域-LPWAN会否蚕食ZigBee的领地" class="headerlink" title="3.3 Round 3: 丢失的故土还是新王的疆域?  LPWAN会否蚕食ZigBee的领地"></a>3.3 Round 3: 丢失的故土还是新王的疆域?  LPWAN会否蚕食ZigBee的领地</h5><h5 id="3-4-Round-4-出身就在你的阴影之下？-既生Z-Wave何生Zigbee"><a href="#3-4-Round-4-出身就在你的阴影之下？-既生Z-Wave何生Zigbee" class="headerlink" title="3.4 Round 4: 出身就在你的阴影之下？ 既生Z-Wave何生Zigbee"></a>3.4 Round 4: 出身就在你的阴影之下？ 既生Z-Wave何生Zigbee</h5><h5 id="3-5-Round-5-小富即安-蓝牙的自我满足"><a href="#3-5-Round-5-小富即安-蓝牙的自我满足" class="headerlink" title="3.5 Round 5: 小富即安 - 蓝牙的自我满足"></a>3.5 Round 5: 小富即安 - 蓝牙的自我满足</h5><h5 id="3-6-分天下-新版图的可能模样"><a href="#3-6-分天下-新版图的可能模样" class="headerlink" title="3.6 分天下, 新版图的可能模样"></a>3.6 分天下, 新版图的可能模样</h5><p><br></p>
-<h4 id="4-鸡同鸭讲-相安的路在何方"><a href="#4-鸡同鸭讲-相安的路在何方" class="headerlink" title="4. 鸡同鸭讲, 相安的路在何方?"></a>4. 鸡同鸭讲, 相安的路在何方?</h4><p>相互直接通讯不畅怎么解决?</p>
-<p><br></p>
-<h4 id="5-未来畅想曲"><a href="#5-未来畅想曲" class="headerlink" title="5. 未来畅想曲"></a>5. 未来畅想曲</h4><p>目前应用在物联网领域的无线技术方案主要有: Wifi、BLE(低功耗蓝牙技术)、ZigBee、Z-wave 以及近几年开始快速成长的lora和新贵NB-IOT.<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">另外:</div><div class="line">1. RF无线射频技术, 由于其主要应用方向在物联网的感知层而非网络层, 这里不加入对比.</div><div class="line">2. 运营商的2/3/4/xG, 是典型的</div></pre></td></tr></table></figure></p>
-<blockquote>
-<p>IMG todo</p>
-</blockquote>
-<h5 id="1-1-Wifi"><a href="#1-1-Wifi" class="headerlink" title="1.1 Wifi"></a>1.1 Wifi</h5><ul>
-<li></li>
-</ul>
 <hr>
-<p>BLE<br>Zigbee<br>Z-Wave<br>Lora<br>6Lowpan</p>
+<blockquote>
+<p>Author： nix.long<br>Date    : 2017.07.26<br>整理撰写，禁止转载； 错误之处，敬谢斧正.</p>
+</blockquote>
 
       
     </div>
@@ -599,7 +598,7 @@
             
 
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-华山论剑Round-1-LPWAN的王者之争-NB-IOT-pk-Lora"><span class="nav-number">1.</span> <span class="nav-text">3.1 华山论剑Round 1: LPWAN的王者之争 - NB-IOT pk Lora</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-2-Round-2-智能家居领域的缠斗还是协作-Wifi-pk-Zigbee"><span class="nav-number">2.</span> <span class="nav-text">3.2 Round 2: 智能家居领域的缠斗还是协作? - Wifi  pk  Zigbee</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-3-Round-3-丢失的故土还是新王的疆域-LPWAN会否蚕食ZigBee的领地"><span class="nav-number">3.</span> <span class="nav-text">3.3 Round 3: 丢失的故土还是新王的疆域?  LPWAN会否蚕食ZigBee的领地</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-4-Round-4-出身就在你的阴影之下？-既生Z-Wave何生Zigbee"><span class="nav-number">4.</span> <span class="nav-text">3.4 Round 4: 出身就在你的阴影之下？ 既生Z-Wave何生Zigbee</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-5-Round-5-小富即安-蓝牙的自我满足"><span class="nav-number">5.</span> <span class="nav-text">3.5 Round 5: 小富即安 - 蓝牙的自我满足</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#3-6-分天下-新版图的可能模样"><span class="nav-number">6.</span> <span class="nav-text">3.6 分天下, 新版图的可能模样</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#4-鸡同鸭讲-相安的路在何方"><span class="nav-number"></span> <span class="nav-text">4. 鸡同鸭讲, 相安的路在何方?</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#5-未来畅想曲"><span class="nav-number"></span> <span class="nav-text">5. 未来畅想曲</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#1-1-Wifi"><span class="nav-number">1.</span> <span class="nav-text">1.1 Wifi</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-5"><a class="nav-link" href="#3-1-华山论剑Round-1-LPWAN的王者之争-NB-IOT-pk-Lora"><span class="nav-number">1.</span> <span class="nav-text">3.1 华山论剑Round 1: LPWAN的王者之争 - NB-IOT pk Lora</span></a></li></ol></div>
             
 
           </div>

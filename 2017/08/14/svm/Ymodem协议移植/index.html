@@ -55,7 +55,11 @@
   
 
   
+    
+      
+    
 
+    
   
 
   
@@ -64,8 +68,16 @@
 
   
     
+      
     
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=monospace:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|monospace:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   
 
 
@@ -105,7 +117,7 @@
 <meta property="og:image" content="http://otfz8unl1.bkt.clouddn.com/markdown/170814/e34H5H7L5i.png">
 <meta property="og:image" content="http://otfz8unl1.bkt.clouddn.com/markdown/170814/2kD9FHbB51.png">
 <meta property="og:image" content="http://otfz8unl1.bkt.clouddn.com/markdown/170814/6JBCfKBlj6.png">
-<meta property="og:updated_time" content="2017-08-15T06:25:05.180Z">
+<meta property="og:updated_time" content="2017-08-15T13:59:34.332Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Ymodem协议移植">
 <meta name="twitter:description" content="STM32/Dvm项目移植FatFS时,使用W25Qxx Flash做文件系统,不能使用USB或其他外设接口直接进行文件拷贝, 因此移植Ymodem协议用于向Flash下载文件.    0. Ymodem介绍Ymodem在嵌入式项目中,常用于文件下载和IAP在线编程.Ymodem协议是一种发送并等待的协议。即发送方发送一个数据包以后，都要等待接收方的确认，分为Ymodem-1K和Ymodem-G">
@@ -364,7 +376,7 @@
 <p>STM32/Dvm项目移植FatFS时,使用W25Qxx Flash做文件系统,不能使用USB或其他外设接口直接进行文件拷贝, 因此移植Ymodem协议用于向Flash下载文件. </p>
 </blockquote>
 <hr>
-<h5 id="0-Ymodem介绍"><a href="#0-Ymodem介绍" class="headerlink" title="0. Ymodem介绍"></a><strong>0. Ymodem介绍</strong></h5><p>Ymodem在嵌入式项目中,常用于文件下载和IAP在线编程.<br>Ymodem协议是一种发送并等待的协议。即发送方发送一个数据包以后，都要等待接收方的确认，分为Ymodem-1K和Ymodem-G两种子格式. </p>
+<h5 id="0-Ymodem介绍"><a href="#0-Ymodem介绍" class="headerlink" title="0. Ymodem介绍"></a><strong>0. Ymodem介绍</strong></h5><p>Ymodem在嵌入式项目中,常用于文件下载和IAP在线编程.<br>Ymodem协议是一种发送并等待的协议。即发送方发送一个数据包以后，都要等待接收方的确认，分为Ymodem-1K和Ymodem-G两种子格式.<br><a id="more"></a></p>
 <ul>
 <li>YModem-1K用1024字节信息块传输取代标准的128字节传输，数据的发送回使用CRC校验，保证数据传输的正确性。它每传输一个信息块数据时，就会等待接收端回应ACK信号，接收到回应后，才会继续传输下一个信息块，保证数据已经全部接收。</li>
 <li>YModem-g传输形式与YModem-1K差不多，但是它去掉了数据的CRC校验码，同时在发送完一个数据块信息后，它不会等待接收端的ACK信号，而直接传输下一个数据块。正是它没有涉及错误校验，才使得它的传输速度比YModem-1K来得块。</li>
@@ -377,7 +389,6 @@
 <p>1.0 帧格式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">START CC ~CC Data[128]:[1024] CRCH CRCL</div></pre></td></tr></table></figure></p>
 <p>一个Ymodem数据帧由帧头(START CC ~CC)、数据体和帧尾三部分构成:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">1) START : 如果是SOH，表示这帧数据体长度为128 Bytes; 为STX, 标识这帧数据体长度为1024 Bytes.(总长恒为128+5 或者1024+5)</div><div class="line">2) CC : 表示帧序号, 从0开始增加,超过255后，又从0开始计数</div><div class="line">3) ~CC为: CC的反码. 一起进行帧序的有效性判断</div><div class="line">4) CRCH/CRCL分别为CRC16校验的高低字节, 校验多项式定义为: CRC16-CCITT/x16+x12+x5+1. CRC只针对数据体计算,不包含帧头</div></pre></td></tr></table></figure></p>
 <p><br></p>
-<a id="more"></a>
 <p>1.1 传输起始帧<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">SOH  00 FF  filename 00 filezise 00  NUL[00] CRCH CRCL</div></pre></td></tr></table></figure></p>
 <blockquote>
 <ol>

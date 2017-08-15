@@ -55,7 +55,11 @@
   
 
   
+    
+      
+    
 
+    
   
 
   
@@ -64,8 +68,16 @@
 
   
     
+      
     
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+
+    
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=monospace:300,300italic,400,400italic,700,700italic|Roboto Slab:300,300italic,400,400italic,700,700italic|monospace:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
   
 
 
@@ -363,19 +375,7 @@
 <p>STM32/Dvm项目移植FatFS时,使用W25Qxx Flash做文件系统,不能使用USB或其他外设接口直接进行文件拷贝, 因此移植Ymodem协议用于向Flash下载文件. </p>
 </blockquote>
 <hr>
-<h5 id="0-Ymodem介绍"><a href="#0-Ymodem介绍" class="headerlink" title="0. Ymodem介绍"></a><strong>0. Ymodem介绍</strong></h5><p>Ymodem在嵌入式项目中,常用于文件下载和IAP在线编程.<br>Ymodem协议是一种发送并等待的协议。即发送方发送一个数据包以后，都要等待接收方的确认，分为Ymodem-1K和Ymodem-G两种子格式. </p>
-<ul>
-<li>YModem-1K用1024字节信息块传输取代标准的128字节传输，数据的发送回使用CRC校验，保证数据传输的正确性。它每传输一个信息块数据时，就会等待接收端回应ACK信号，接收到回应后，才会继续传输下一个信息块，保证数据已经全部接收。</li>
-<li>YModem-g传输形式与YModem-1K差不多，但是它去掉了数据的CRC校验码，同时在发送完一个数据块信息后，它不会等待接收端的ACK信号，而直接传输下一个数据块。正是它没有涉及错误校验，才使得它的传输速度比YModem-1K来得块。</li>
-</ul>
-<p>一般情况使用YModem-1K传输，而平时所说的YModem也是指的是YModem-1k.</p>
-<p><br></p>
-<h4 id="1-Ymodem的协议格式"><a href="#1-Ymodem的协议格式" class="headerlink" title="1. Ymodem的协议格式"></a><strong>1. Ymodem的协议格式</strong></h4><blockquote>
-<p>传输信号定义:<br><img src="http://otfz8unl1.bkt.clouddn.com/markdown/170814/e34H5H7L5i.png" alt="mark"></p>
-</blockquote>
-<p>1.0 帧格式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">START CC ~CC Data[128]:[1024] CRCH CRCL</div></pre></td></tr></table></figure></p>
-<p>一个Ymodem数据帧由帧头(START CC ~CC)、数据体和帧尾三部分构成:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">1) START : 如果是SOH，表示这帧数据体长度为128 Bytes; 为STX, 标识这帧数据体长度为1024 Bytes.(总长恒为128+5 或者1024+5)</div><div class="line">2) CC : 表示帧序号, 从0开始增加,超过255后，又从0开始计数</div><div class="line">3) ~CC为: CC的反码. 一起进行帧序的有效性判断</div><div class="line">4) CRCH/CRCL分别为CRC16校验的高低字节, 校验多项式定义为: CRC16-CCITT/x16+x12+x5+1. CRC只针对数据体计算,不包含帧头</div></pre></td></tr></table></figure></p>
-<p><br></p>
+<h5 id="0-Ymodem介绍"><a href="#0-Ymodem介绍" class="headerlink" title="0. Ymodem介绍"></a><strong>0. Ymodem介绍</strong></h5><p>Ymodem在嵌入式项目中,常用于文件下载和IAP在线编程.<br>Ymodem协议是一种发送并等待的协议。即发送方发送一个数据包以后，都要等待接收方的确认，分为Ymodem-1K和Ymodem-G两种子格式.<br>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/08/14/svm/Ymodem协议移植/#more" rel="contents">
@@ -521,28 +521,11 @@
 
       
         
-          <blockquote>
-<p>Author - nix.long<br>Date -   2017.08.04</p>
-</blockquote>
-<hr>
-<h5 id="0-STM32内存结构图"><a href="#0-STM32内存结构图" class="headerlink" title="0.STM32内存结构图"></a><strong>0.STM32内存结构图</strong></h5><p><img src="http://otfz8unl1.bkt.clouddn.com/markdown/170804/l8CA8Dh48J.png" alt="mark"><br><br></p>
-<h5 id="1-要点"><a href="#1-要点" class="headerlink" title="1.要点"></a><strong>1.要点</strong></h5><p><br></p>
-<h6 id="1-1-两种存储类型-RAM-和-Flash"><a href="#1-1-两种存储类型-RAM-和-Flash" class="headerlink" title="1.1 两种存储类型: RAM 和 Flash"></a><strong>1.1 两种存储类型: RAM 和 Flash</strong></h6><p><br></p>
-<ul>
+          <h5 id="0-STM32内存结构图"><a href="#0-STM32内存结构图" class="headerlink" title="0.STM32内存结构图"></a><strong>0.STM32内存结构图</strong></h5><p><img src="http://otfz8unl1.bkt.clouddn.com/markdown/170804/l8CA8Dh48J.png" alt="mark"></p>
+<h5 id="1-要点"><a href="#1-要点" class="headerlink" title="1.要点"></a><strong>1.要点</strong></h5><h6 id="1-1-两种存储类型-RAM-和-Flash"><a href="#1-1-两种存储类型-RAM-和-Flash" class="headerlink" title="1.1 两种存储类型: RAM 和 Flash"></a><strong>1.1 两种存储类型: RAM 和 Flash</strong></h6><ul>
 <li>RAM可读可写，在STM32的内存结构上，RAM地址段分布[0x2000_0000, 0x2000_0000 + RAM size)</li>
 <li>Flash只读，在STM32的内存结构上，Flash地址段[0x0800_0000, 0x2000_0000)</li>
 </ul>
-<p><br></p>
-<h6 id="1-2-六类存储数据段-data-bss-text-constdata-heap-stack"><a href="#1-2-六类存储数据段-data-bss-text-constdata-heap-stack" class="headerlink" title="1.2 六类存储数据段: .data/.bss/.text/.constdata/heap/stack"></a><strong>1.2 六类存储数据段: .data/.bss/.text/.constdata/heap/stack</strong></h6><p><br></p>
-<ul>
-<li>.data数据段: 用来存放初始化了但不是初始化为0的全局变量(global)和静态变量（static）。它是可读可写的</li>
-<li>.bss(Block Started by Symbol)数据段: 用于存放没有初始化或初始化为0的全局变量和静态变量，可读可写，如果没有初始化, 系统会将变量初始化为0.</li>
-<li>.text代码段: 用来放程序代码（code）， 在代码编译完成后, 长久只读存放于此.</li>
-<li>.constdata只读常量数据段: const限定的数据类型存放与此，只读.</li>
-<li>heap堆区: 通常只我们说的动态内存分配,使用内存分配器(memory allocator)管理, malloc/free进行申请和释放</li>
-<li>stack栈区: 在代码执行时用来保存函数的局部变量和参数。其操作方式类似于数据结构中的栈，是一种“后进先出”（Last In First Out，LIFO）的数据结构。这意味着最后放到栈上的数据，将会是第一个从栈上移走的数据，对于哪些暂时存储的信息，和不需要长时间保存的信息来说，LIFO这种数据结构非常理想。在调用函数或过程后，系统通常会清除栈上保存的局部变量、函数调用信息及其它信息。栈的顶部通常在可读写的RAM区的最后，其地址空间通常“向下减少”，即当栈上保存的数据越多，栈的地址就越小。</li>
-</ul>
-<p><br></p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/08/04/svm/STM32内存结构总结/#more" rel="contents">
@@ -615,7 +598,7 @@
         
           <h1 class="post-title" itemprop="name headline">
                 
-                <a class="post-title-link" href="/2017/07/26/iot/Iot网络层无线技术方案PK(2) - 华山论剑Round 1 - LPWAN的王者之争 - NB-IOT pk Lora/" itemprop="url">Iot网络层无线技术方案PK(2) - 华山论剑Round 1 - LPWAN的王者之争 - NB-IOT pk Lora</a></h1>
+                <a class="post-title-link" href="/2017/07/26/iot/Iot网络层无线技术方案PK(2) - 华山论剑Round 1 - LPWAN的王者之争 - NB-IOT pk Lora/" itemprop="url">Iot网络层无线技术方案PK(2) - LPWAN的王者之争[NB-IOT pk Lora]</a></h1>
         
 
         <div class="post-meta">
@@ -689,14 +672,9 @@
       
         
           <blockquote>
-<p>Author： nix.long<br>Date    : 2017.07.26<br>整理撰写，禁止转载； 错误之处，敬谢斧正.</p>
-</blockquote>
-<hr>
-<blockquote>
 <p>续接上篇:       <strong>Iot网络层无线技术方案PK(1) - 技术特点初探</strong></p>
 </blockquote>
 <hr>
-<p>Tags: IOT NB-IOT Lora</p>
 <h5 id="3-1-华山论剑Round-1-LPWAN的王者之争-NB-IOT-pk-Lora"><a href="#3-1-华山论剑Round-1-LPWAN的王者之争-NB-IOT-pk-Lora" class="headerlink" title="3.1 华山论剑Round 1: LPWAN的王者之争 - NB-IOT pk Lora"></a><strong>3.1 华山论剑Round 1: LPWAN的王者之争 - NB-IOT pk Lora</strong></h5><p>低功耗广域网应用典型的场景条件是: </p>
 <ul>
 <li>a. 终端节点无法或者很难提供市政电源供电, 需要使用电池设备</li>
@@ -705,15 +683,6 @@
 <li>d. 终端节点之间的距离或者终端节点安装位置距离数据中心可能相距非常远</li>
 </ul>
 <p>回到上文的两中网络结构中, LPWAN方案就是从终端到云端典型的一层网络结构。上文的场景条件我们假设用其他方案实现: </p>
-<ol>
-<li>如果此类场景都通过有线布线来实现，那么实现方案是灾难性的。</li>
-<li>在LPWAN技术成熟之前，由于Zigbee具有低功耗和路由两个特征，且修改条件d为满足这样的条件: 节点之间的距离相距不远且环境容易接入其他广域网络.  这样的小部分场景就让Zigbee + 网关转换的两层网络结构蚕食。</li>
-<li>如果修改条件a能提供电源供电, 那么现成的2/3/4G网络就能撸袖子开干(前提也是信号能到达).</li>
-</ol>
-<p>所有条件都不能修改？ 好了， 现在LPWAN下众神归位，上帝的归该还给上帝了…</p>
-<p>NB-IOT和Lora有极其相似的技术规范特征和设计目的, 一个为3GPP所生,一个由Lora联盟在养. 他们生来就是相同应用领域的竞争关系, 全球范围内, 领地都各有斩获, 但在国内，情况大有不同: 所有运营商都在推NB-IOT. 而只有部分企业在局部范围内建设Lora网络用于试点或者给出Lora网络建设方案等待买家.</p>
-<p>假设在国内最终的结果和目前状况一样：NB-IOT全歼三大运营商、Lora被三大运营商通通抛弃。那么Lora是否该提前在中国市场唱响挽歌呢？</p>
-<p>我们先不急于下结论，先来看看GSMA研究报告给LPWAN定义的7大类应用领域：农业、环境、消费品及医疗、工业、物流、智能楼宇以及智慧城市/公共事业。</p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/07/26/iot/Iot网络层无线技术方案PK(2) - 华山论剑Round 1 - LPWAN的王者之争 - NB-IOT pk Lora/#more" rel="contents">
@@ -859,12 +828,7 @@
 
       
         
-          <hr>
-<blockquote>
-<p>Author： nix.long<br>Date    : 2017.07.25<br>整理撰写，禁止转载； 错误之处，敬谢斧正.</p>
-</blockquote>
-<hr>
-<h4 id="0-引言"><a href="#0-引言" class="headerlink" title="0.引言"></a>0.引言</h4><blockquote>
+          <h4 id="0-引言"><a href="#0-引言" class="headerlink" title="0.引言"></a>0.引言</h4><blockquote>
 <p><strong>物联网领域典型的3层结构划分为:</strong></p>
 <ul>
 <li>感知层</li>
@@ -873,32 +837,6 @@
 </ul>
 <p>感知层是数据的来源, 应用层是数据的分析展现. 网络层是钮合感知层和应用层的重要数据通路.目前网络层的成熟方案有各种有线、无线方式或组合方式。本文主要讨论几个用于物联网网络层的无线技术</p>
 </blockquote>
-<p><br></p>
-<h4 id="1-网络层技术方案总览"><a href="#1-网络层技术方案总览" class="headerlink" title="1.网络层技术方案总览"></a>1.网络层技术方案总览</h4><p><img src="http://otfz8unl1.bkt.clouddn.com/markdown/170725/lemdeLH9I9.png?imageslim" alt="两类网络结构"></p>
-<p> 根据不同的应用场景, 可以使用两类网络结构来完成物联网组网.</p>
-<blockquote>
-<ol>
-<li><p>单层网络结构:<br>如果应用场景终端点数极少或者终端点距离极远, 可以直接使用点通过互联网接入云的网络结构, 这里的网络接入解决方案可以是有线的以太网、无线的wifi(*参见说明1)、 或者运营商的2/3/4/5G网络、SMS短消息甚至急趋于成熟的nb-iot</p>
-</li>
-<li><p>两层网络结构:<br>如果应用场景终端点数较多或终端点需要相互通讯,就需要采用双层网络结构组网, 其中两层网络中间的纽带就是物联网网关(不同应用场景有不同叫法).网关向上负责广域网的接入, 网关向下负责局域网各终端节点的管理,并进一步实现实现两层网络的转换和进行数据转发. 根据不同应用场景, 广域网的技术方案可以是以太网、Wifi (<em> 参见说明1)、2/3/4/5G 等(此类模式绝大多数场景中SMS、NB-IOT不适合作为广域网出口). 局域网技术方案可以使用MODBUS等成熟的老牌有线通讯协议, 也可以从Wifi(</em> 参见说明1)、 BLE(低功耗蓝牙技术)、ZigBee、Z-Wave、Lora(* 见说明2)等无线技术方案中选择</p>
-</li>
-</ol>
-</blockquote>
-<p>要点:</p>
-<blockquote>
-<ol>
-<li>使用有线连接技术进行组网，可选用的广域网接入方式有以太网,局域网组网方式有以太网、MODBUS等</li>
-<li>使用无线连接技术进行组网，可选用的广域网接入方式有Wifi、NB-IOT，而局域网可选择的方式有Wifi、BLE、Zigbee、Z-Wave、Lora(* 见说明2)等</li>
-</ol>
-</blockquote>
-<p>说明:</p>
-<blockquote>
-<ol>
-<li>Wifi[无线保真]属于WLAN(无线局域网)的技术之一，是局域网联网解决方案, 但是实际使用中,Wifi AP通过有线宽带或者2/3/4G运营商网络直接接入广域网后. 那么接入此AP的WIFI STA也直接具备广域网访问能力. 因此这里我们视WIFI既能做为局域网组网方案、也能作为广域网接入方案. </li>
-<li><strong>关于Lora和NB-IOT</strong> 补充一点:  本身这两种协议都属于LPWAN(低功耗广域网) 方案！ 是的, 他们设计初衷是直接作为广域网接入协议的. 但是由于国内运营商都主推NB-IOT能进行广域网接入, 而对于工作于非授权频段的Lora还没有任何表示(国外有部分运营商在推), 国内用户需要自行搭建基站/网关来进行广域网接入. 在一些小型的lora使用场景里, Lora网关是需要通过协议转换才能接入广域网，因此针对目前国内状况，本文就暂且将Lora归入局域网组网方案；而将NB-IOT视为广域网接入方案.</li>
-</ol>
-</blockquote>
-<p>接下来主要比较 <strong>Wifi、Bluetooth(蓝牙)、ZigBee、Z-Wave、Lora、NB-IOT</strong> 几类无线通信技术的特点和典型应用场景<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">备注: </div><div class="line">无线通信技术非常多, 为何本文只选这几种对比? 缘由前4类(Wifi/蓝牙/Zigbee/Z-Wave) 在近年的家居物联网领域采用相对广泛, 而Lora/NB-IOT又在中国的LPWAN应用领域上位之争争得不亦乐乎, 就让人容易忽略掉LPWAN的诸如sigfox的其他几个儿子...</div></pre></td></tr></table></figure></p>
 <p><br></p>
           <!--noindex-->
           <div class="post-button text-center">
@@ -1046,14 +984,9 @@
       
         
           <blockquote>
-<p>Author:     nix.long<br>原创撰写，禁止转载； 错误之处，敬谢大刀斧正.</p>
-</blockquote>
-<hr>
-<blockquote>
 <p>Internet Of Things - 万物联网。 互联网是人与人的网络互联来产生价值, 而物联网目的是能将任何物体的任何属性都能接入网络或进行反向控制(交互控制和智能控制), 有价值的立刻产生价值, 没有价值的进行价值创造.</p>
 </blockquote>
 <hr>
-<p>[TOC]</p>
 <h4 id="0-物联网要义"><a href="#0-物联网要义" class="headerlink" title="0. 物联网要义"></a><strong>0. 物联网要义</strong></h4><p>要义:</p>
 <blockquote>
 <ol>
@@ -1069,28 +1002,6 @@
 </li>
 </ol>
 </blockquote>
-<p>不同应用场景的可能的演进过程:</p>
-<blockquote>
-<ol>
-<li>进行数据获取和人机交互性的数据下行</li>
-<li>进行数据获取和人机交互性的数据下行和控制下行</li>
-<li>进行数据获取，加入AI和各种算法服务，完成下行控制的智能化、自动化</li>
-</ol>
-</blockquote>
-<ul>
-<li><p>远程可以通过互联网加各种局域的有线/无线协议来进行技术实现, 对于获取数据和远程控制, 只有基于安全才会有实用意义. 这里的安全包括但不仅限于: 数据获取、传输和存储的加密性安全；数据不遗失的稳定性安全；涉及用户的隐私性数据安全；涉及远程控制的高安全可靠性. 但在目前行业的一片喧嚣声中, 安全性可能是最被忽略和置后考虑的. </p>
-</li>
-<li><p>根据行业的差异性，物联网又涉及到几个大的细分领域：工业物联(4.0重要方向), 家居物联, 车联网以及农业、环境、城市公共事业等</p>
-</li>
-<li><p>由于安全性的顾虑, 目前家居物连外的其他方向, 远程控制的发展极为缓慢的. 唯在家居物连方向，由于远程控制涉及的安全性不为特别突出, 一些典型的远程控制场景在这个领域诞生, 比如**的家居产品系列. 当然，如果突然遇到家里接入网络的LED灯忽明忽暗，也不要感到恐怖。只是可能你的家居网络被黑客攻破后逗你玩玩而已.</p>
-</li>
-<li><p>这里使用家居物联而非智能家居这个词的原因是: 联网只是初级门槛, 而智慧还要涉及更多的工作</p>
-</li>
-</ul>
-<blockquote>
-<p>本文先主要谈谈三层结构的网络层, 感知层和应用层涉及技术在以后的设计案例中介绍</p>
-</blockquote>
-<p><br></p>
           <!--noindex-->
           <div class="post-button text-center">
             <a class="btn" href="/2017/07/24/iot/Iot基础案例设计初览/#more" rel="contents">
