@@ -1,63 +1,198 @@
-(function($){
-    var toTop = ($('#sidebar').height() - $(window).height()) + 60;
-    // Caption
-    $('.article-entry').each(function(i) {
-        $(this).find('img').each(function() {
-            if (this.alt && !(!!$.prototype.justifiedGallery && $(this).parent('.justified-gallery').length)) {
-                $(this).after('<span class="caption">' + this.alt + '</span>');
-            }
+(function($) {
+  "use strict";
+  $(window).on("load", function() { // makes sure the whole site is loaded
+    //preloader
+    $("#status").fadeOut(); // will first fade out the loading animation
+    $("#preloader").delay(450).fadeOut("slow"); // will fade out the white DIV that covers the website.
+    
+    //masonry
+    $('.grid').masonry({
+      itemSelector: '.grid-item'
+      
+    });    
+  });
 
-            // 对于已经包含在链接内的图片不适用lightGallery
-            if ($(this).parent().prop("tagName") !== 'A') {
-                $(this).wrap('<a href="' + ($(this).attr("data-imgbig") ? $(this).attr("data-imgbig") : this.src) + '" title="' + this.alt + '" class="gallery-item"></a>');
-            }
-        });
-    });
-    if (typeof lightGallery != 'undefined') {
-        var options = {
-            selector: '.gallery-item'
-        };
-        $('.article-entry').each(function(i, entry) {
-            lightGallery(entry, options);
-        });
-        lightGallery($('.article-gallery')[0], options);
-    }
-    if (!!$.prototype.justifiedGallery) {  // if justifiedGallery method is defined
-        var options = {
-            rowHeight: 140,
-            margins: 4,
-            lastRow: 'justify'
-        };
-        $('.justified-gallery').justifiedGallery(options);
-    }
 
-    // Profile card
-    $(document).on('click', function () {
-        $('#profile').removeClass('card');
-    }).on('click', '#profile-anchor', function (e) {
-        e.stopPropagation();
-        $('#profile').toggleClass('card');
-    }).on('click', '.profile-inner', function (e) {
-        e.stopPropagation();
+  $(document).ready(function(){  
+
+    //active menu
+    $(document).on("scroll", onScroll);
+ 
+    $('a[href^="#"]').on('click', function (e) {
+      e.preventDefault();
+      $(document).off("scroll");
+ 
+      $('a').each(function () {
+        $(this).removeClass('active');
+      })
+      $(this).addClass('active');
+ 
+      var target = this.hash;
+      $target = $(target);
+      $('html, body').stop().animate({
+        'scrollTop': $target.offset().top+2
+      }, 500, 'swing', function () {
+        window.location.hash = target;
+        $(document).on("scroll", onScroll);
+      });
     });
 
-    // To Top
-    if ($('#sidebar').length) {
-        $(document).on('scroll', function () {
-            if ($(document).width() >= 800) {
-                if(($(this).scrollTop() > toTop) && ($(this).scrollTop() > 0)) {
-                    $('#toTop').fadeIn();
-                    $('#toTop').css('left', $('#sidebar').offset().left);
-                } else {
-                    $('#toTop').fadeOut();
-                }
-            } else {
-                $('#toTop').fadeIn();
-                $('#toTop').css('right', 20);
-            }
-        }).on('click', '#toTop', function () {
-            $('body, html').animate({ scrollTop: 0 }, 600);
-        });
+    
+    //scroll js
+    smoothScroll.init({
+      selector: '[data-scroll]', // Selector for links (must be a valid CSS selector)
+      selectorHeader: '[data-scroll-header]', // Selector for fixed headers (must be a valid CSS selector)
+      speed: 500, // Integer. How fast to complete the scroll in milliseconds
+      easing: 'easeInOutCubic', // Easing pattern to use
+      updateURL: true, // Boolean. Whether or not to update the URL with the anchor hash on scroll
+      offset: 0, // Integer. How far to offset the scrolling anchor location in pixels
+      callback: function ( toggle, anchor ) {} // Function to run after scrolling
+    });
+
+    //menu
+    var bodyEl = document.body,
+    content = document.querySelector( '.content-wrap' ),
+    openbtn = document.getElementById( 'open-button' ),
+    closebtn = document.getElementById( 'close-button' ),
+    isOpen = false;
+
+    function inits() {
+      initEvents();
     }
+
+    function initEvents() {
+      openbtn.addEventListener( 'click', toggleMenu );
+      if( closebtn ) {
+        closebtn.addEventListener( 'click', toggleMenu );
+      }
+
+      // close the menu element if the target it´s not the menu element or one of its descendants..
+      content.addEventListener( 'click', function(ev) {
+        var target = ev.target;
+        if( isOpen && target !== openbtn ) {
+          toggleMenu();
+        }
+      } );
+    }
+
+    function toggleMenu() {
+      if( isOpen ) {
+        classie.remove( bodyEl, 'show-menu' );
+      }
+      else {
+        classie.add( bodyEl, 'show-menu' );
+      }
+      isOpen = !isOpen;
+    }
+
+    inits();
+
+
+    //typed js
+    $(".typed").typed({
+        strings: ["nix.long"/*, "A Coder", "Love Simplicity"*/],
+        typeSpeed: 100,
+        backDelay: 900,
+        // loop
+        loop: false
+    });
+
+    //owl carousel
+    $('.owl-carousel').owlCarousel({
+      autoPlay: 3000, //Set AutoPlay to 3 seconds
+ 
+      items : 1,
+      itemsDesktop : [1199,1],
+      itemsDesktopSmall : [979,1],
+      itemsTablet : [768,1],
+      itemsMobile : [479,1],
+
+      // CSS Styles
+      baseClass : "owl-carousel",
+      theme : "owl-theme"
+    });
+
+    $('.owl-carousel2').owlCarousel({
+      autoPlay: 3000, //Set AutoPlay to 3 seconds
+ 
+      items : 1,
+      itemsDesktop : [1199,1],
+      itemsDesktopSmall : [979,1],
+      itemsTablet : [768,1],
+      itemsMobile : [479,1],
+      autoPlay : false,
+
+      // CSS Styles
+      baseClass : "owl-carousel",
+      theme : "owl-theme"
+    });
+
+    //contact
+    $('input').blur(function() {
+
+      // check if the input has any value (if we've typed into it)
+      if ($(this).val())
+        $(this).addClass('used');
+      else
+        $(this).removeClass('used');
+    });
+
+    //pop up porfolio
+    $('.portfolio-image li a').magnificPopup({
+      type: 'image',
+      gallery: {
+        enabled: true
+      }
+      // other options
+    });
+    
+    //Skill
+    jQuery('.skillbar').each(function() {
+      jQuery(this).appear(function() {
+        jQuery(this).find('.count-bar').animate({
+          width:jQuery(this).attr('data-percent')
+        },3000);
+        var percent = jQuery(this).attr('data-percent');
+        jQuery(this).find('.count').html('<span>' + percent + '</span>');
+      });
+    }); 
+
+  
+  });
+  
+    
+  //header
+  function inits() {
+    window.addEventListener('scroll', function(e){
+        var distanceY = window.pageYOffset || document.documentElement.scrollTop,
+            shrinkOn = 300,
+            header = document.querySelector(".for-sticky");
+        if (distanceY > shrinkOn) {
+            classie.add(header,"opacity-nav");
+        } else {
+            if (classie.has(header,"opacity-nav")) {
+                classie.remove(header,"opacity-nav");
+            }
+          }
+      });
+    }
+
+  window.onload = inits();
+
+  //nav-active
+  function onScroll(event){
+    var scrollPosition = $(document).scrollTop();
+    $('.menu-list a').each(function () {
+      var currentLink = $(this);
+      var refElement = $(currentLink.attr("href"));
+      if (refElement.position().top <= scrollPosition && refElement.position().top + refElement.height() > scrollPosition) {
+        $('.menu-list a').removeClass("active");
+        currentLink.addClass("active");
+      }
+      else{
+        currentLink.removeClass("active");
+      }
+    });
+  }
 
 })(jQuery);
